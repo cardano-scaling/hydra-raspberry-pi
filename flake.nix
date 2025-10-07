@@ -17,6 +17,7 @@
 
   outputs = { self, nixpkgs, nixos-raspberrypi }@inputs:
   let system = "aarch64-linux";
+  in
     {
       nixosConfigurations = {
         hydraberry = nixos-raspberrypi.lib.nixosSystem {
