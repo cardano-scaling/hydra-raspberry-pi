@@ -16,8 +16,6 @@
   };
 
   outputs = inputs:
-  let system = "aarch64-linux";
-  in
     {
       nixosConfigurations = {
         hydraberry = inputs.nixos-raspberrypi.lib.nixosSystem {
@@ -28,7 +26,6 @@
                 raspberry-pi-5.base
                 raspberry-pi-5.bluetooth
               ];
-              inherit system;
             })
             ({ ... }: {
               networking.hostName = "hydraberry";
@@ -39,7 +36,7 @@
                   "wheel"
                 ];
                 environment.systemPackages = [
-                  inputs.hydra.packages.${system}.hydra-node
+                  inputs.hydra.packages.aarch64-linux.hydra-node
                 ];
               };
             })
