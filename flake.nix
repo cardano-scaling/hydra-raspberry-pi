@@ -35,10 +35,10 @@
                 extraGroups = [
                   "wheel"
                 ];
+              };
                 environment.systemPackages = [
                   inputs.hydra.packages.aarch64-linux.hydra-node
                 ];
-              };
             })
           ];
         };
