@@ -15,16 +15,16 @@
     ];
   };
 
-  outputs = { self, nixpkgs, nixos-raspberrypi }@inputs:
+  outputs = inputs:
   let system = "aarch64-linux";
   in
     {
       nixosConfigurations = {
-        hydraberry = nixos-raspberrypi.lib.nixosSystem {
+        hydraberry = inputs.nixos-raspberrypi.lib.nixosSystem {
           specialArgs = inputs;
           modules = [
             ({ ... }: {
-              imports = with nixos-raspberrypi.nixosModules; [
+              imports = with inputs.nixos-raspberrypi.nixosModules; [
                 raspberry-pi-5.base
                 raspberry-pi-5.bluetooth
               ];
